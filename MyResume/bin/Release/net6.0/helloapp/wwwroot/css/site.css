@@ -1,0 +1,98 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+a {
+    text-decoration:none;
+    color:black
+}
+
+.tc{
+    text-align:center
+}
+.w80p{
+    width:80%
+}
+.ma{
+    margin:50px auto
+}
+.ph{
+    height:13vw;
+}
+
+.list_card {
+    width: 18rem;
+    animation-name: turn_card_back;
+    animation-duration: 0.3s;
+    transform: rotate(0deg)
+}
+
+    .list_card:hover {
+        animation-name: turn_card;
+        animation-duration: 0.3s;
+        transform: rotate(5deg)
+    }
+
+@keyframes turn_card {
+    from {
+        transform: rotate(0deg)
+    }
+
+    to {
+        transform: rotate(5deg)
+    }
+}
+
+@keyframes turn_card_back {
+    from {
+        transform: rotate(5deg)
+    }
+
+    to {
+        transform: rotate(0deg)
+    }
+}
+
+.avatar{
+    width:500px;
+    border-radius:20px
+}
+
+.name {
+    color: white;
+    margin-top: -250px;
+    text-align: center;
+    opacity:0;
+}
+.mypic {
+    height: 300px;
+}
+.mypic:hover .name {
+    animation: show_name 0.4s;
+    opacity: 1;
+}
+
+@keyframes show_name {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+

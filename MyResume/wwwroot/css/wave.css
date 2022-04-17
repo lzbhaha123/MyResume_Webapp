@@ -1,0 +1,64 @@
+.wave-animation {
+  position: relative;
+  width: 100%;
+  height: 243px;
+  background-color: #8bcfd4;
+  background-size: cover;
+  background-attachment: fixed;
+  
+}
+.wave-animation .wave {
+  position: absolute;
+  width: 100%;
+  height: 143px;/*PNG*/
+  top:100px;
+  left:0;
+  background-image: url('./anim-onda.png');
+  animation: anim 10s linear infinite;
+  
+}
+.wave-animation .wave:before{
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 143px;
+  top:0px;
+  left:0;
+  background-image: url('./anim-onda.png');
+  opacity: 0.4;
+  animation: anim-rev 10s linear infinite;
+  
+}
+.wave-animation .wave:after{
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 143px;
+  top:0px;
+  left:0;
+  background-image: url('./anim-onda.png');
+  opacity: 0.6;
+  animation-delay: -5s;
+  animation: anim 20s linear infinite;
+  
+}
+@keyframes anim {
+  0%
+  {
+    background-position: 0;
+  }
+  100%
+  {
+    background-position: 1360px;
+  }
+}
+@keyframes anim-rev {
+  0%
+  {
+    background-position: 1360;
+  }
+  100%
+  {
+    background-position: 0px;
+  }
+}

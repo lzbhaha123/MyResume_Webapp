@@ -1,0 +1,20 @@
+﻿@model MyResume.Models.Article
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div>
+    <a asp-action="Show"><i class="fa fa-chevron-left"></i>&nbsp; Back to List</a>
+</div>
+<div>
+    <h4 class="tc">@Html.DisplayFor(model => model.Title)</h4>
+    <div class="tc ma">
+        <img src="@Html.DisplayFor(model => model.Pictrue)" class="card-img-top w80p" alt="...">
+    </div>
+    
+    <div>
+        @Html.DisplayFor(model => model.Body)
+    </div>
+</div>
+

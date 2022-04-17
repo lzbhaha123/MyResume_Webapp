@@ -1,0 +1,120 @@
+﻿
+@{
+    ViewData["Title"] = "Home Page";
+    
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/wave.css" >
+    <link rel="stylesheet" type="text/css" href="~/css/style.css" >
+    <title>Document</title>
+</head>
+<body >
+    
+    <div >
+        
+        <div class="wave-animation"> 
+            <div class="top_button_place">
+                <div>
+                    <a asp-controller="About" asp-action="Index">
+                        <i class="fa fa-user-circle fa-3x"></i>
+                    </a>
+                </div>
+                <div>
+                    <!--<a href="#"><i class="fa fa-info-circle fa-3x"></i></a>-->
+                    
+                    <a asp-controller="Contact" asp-action="Index"><i class="fa fa-question-circle fa-3x"></i></a>
+                    
+                </div>
+            </div>
+            
+            
+            
+            <div class="wave">
+            </div>
+            
+        </div>
+    </div>
+    <div id="gate" class="accesses_place">
+        <div onclick="showList(1)"><img src="~/images/projects.jpg" ><p>My Projects</p></div>
+        <div onclick="showList(2)"><img src="~/images/articles.jpg" ><p>My Articles</p></div>
+        <div onclick="showList(3)"><img src="~/images/experiences.jpg" ><p>My Experiences</p></div>
+    </div>
+    <div id="list1" class="article_list">
+        <div class="head_column">
+            <div class="left_column"><i onclick="hideList(1)" class="fa fa-chevron-left fa-3x"></i></div>
+            <div class="right_column"><a class="nav-link text-dark" asp-area="" asp-controller="Projects" asp-action="Show"><i  class="fa fa-ellipsis-h fa-3x"></i></a></div>
+        </div>
+        <div class="list_content">
+            @foreach (var item in ViewData["projects"] as IEnumerable<MyResume.Models.Project>) {
+                <div class="content_block">
+                    <div>
+                        <a asp-action="Details"  asp-controller="Projects"  asp-route-id="@item.Id">
+                            <img src="@Html.DisplayFor(modelItem => item.Pictrue)" >
+                            <p>@Html.DisplayFor(modelItem => item.Title)</p>
+                        </a>
+                    </div>
+                </div>
+            } 
+        </div>
+    </div>
+    <div id="list2" class="article_list">
+        <div class="head_column">
+            <div class="left_column"><i onclick="hideList(2)" class="fa fa-chevron-left fa-3x"></i></div>
+            <div class="right_column"><a class="nav-link text-dark" asp-area="" asp-controller="Articles" asp-action="Show"><i  class="fa fa-ellipsis-h fa-3x"></i></a></div>
+        </div>
+        <div class="list_content">
+            @foreach (var item in ViewData["articles"] as IEnumerable<MyResume.Models.Article>) {
+                <div class="content_block">
+                    <div>
+                        <a asp-action="Details" asp-controller="Articles" asp-route-id="@item.Id">
+                            <img src="@Html.DisplayFor(modelItem => item.Pictrue)" >
+                            <p>@Html.DisplayFor(modelItem => item.Title)</p>
+                        </a>
+                    </div>
+                </div>
+            } 
+            
+        </div>
+    </div>
+    <div id="list3" class="article_list">
+        <div class="head_column">
+            <div class="left_column"><i onclick="hideList(3)" class="fa fa-chevron-left fa-3x"></i></div>
+            <div class="right_column"><a class="nav-link text-dark" asp-area="" asp-controller="Experiences" asp-action="Show"><i  class="fa fa-ellipsis-h fa-3x"></i></a></div>
+        </div>
+        <div class="list_content">
+            @foreach (var item in ViewData["experiences"] as IEnumerable<MyResume.Models.Experience>) {
+                <div class="content_block">
+                    <div>
+                        <a asp-action="Details" asp-controller="Experiences" asp-route-id="@item.Id">
+                            <img src="@Html.DisplayFor(modelItem => item.picture)" >
+                            <p>@Html.DisplayFor(modelItem => item.Title)</p>
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    
+    <script>
+        function showList(e){
+            document.getElementById("gate").classList.add("accesses_place_blur")
+            document.getElementById("list1").classList.remove("show_article_list")
+            document.getElementById("list2").classList.remove("show_article_list")
+            document.getElementById("list3").classList.remove("show_article_list")
+            document.getElementById("list"+e).classList.add("show_article_list")
+        }
+        function hideList(e){
+            document.getElementById("gate").classList.remove("accesses_place_blur")
+            document.getElementById("list"+e).classList.remove("show_article_list")
+        }
+    </script>
+
+</body>
+</html>

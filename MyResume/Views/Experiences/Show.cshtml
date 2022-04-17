@@ -1,0 +1,22 @@
+﻿@model IEnumerable<MyResume.Models.Experience>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>My Experiences</h1>
+<br />
+
+
+@foreach (var item in Model) {
+    <div class="card mb-3" >
+        <div class="card-header"><h5> @Html.DisplayFor(modelItem => item.Title)</h5></div>
+        <div class="card-body">
+            <p class="card-text">From: @Html.DisplayFor(modelItem => item.Duration)</p>
+            <p class="card-text">Location: @Html.DisplayFor(modelItem => item.Location)</p>
+            <p class="card-text"> @Html.DisplayFor(modelItem => item.description) </p>
+        </div>
+    </div>
+}
+
